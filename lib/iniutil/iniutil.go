@@ -74,7 +74,7 @@ func SupplierInConfig(supplier string) bool {
 }
 
 func AddConfigEntry(secName string, category string) {
-	fmt.Println("ADDING CONFIG ENTRY", secName, category)
+	fmt.Println("Lisatud configi: ", secName, "kategooria:", category)
 	section, err := cfg.NewSection(secName)
 	if err != nil {
 		panic(err)

@@ -43,7 +43,7 @@ func promptCategoryUpdate(items []string) {
 
 func promptConfigUpdate() string {
 	prompt := promptui.Select{
-		Label:  "Tehingu kaupmees puudub, salvesta kaupmees?",
+		Label:  "\033[1mTehingu kaupmees puudub, salvesta kaupmees?\033[0m",
 		Items:  []string{"jah", "ei"},
 		Stdout: os.Stdout,
 	}
@@ -56,7 +56,13 @@ func promptConfigUpdate() string {
 
 func RunPrompts(r *util.Record) {
 	// log for the user
-	fmt.Println("\033[32m", "TEHING:", r.Timestamp, ":", r.Supplier, "on kandnud raha. Summa:", r.Amount, r.Currency, "\033[0m")
+	if r.TransactionType == "K" {
+		fmt.Println("\033[32m", "TEHING:", r.Timestamp, ":", r.Supplier, "on kandnud raha. Summa:", r.Amount, r.Currency, "\033[0m")
+	}
+
+	if r.TransactionType == "D" {
+		fmt.Println("\033[1;31m", "TEHING:", r.Timestamp, ":", r.Supplier, "oled maksnud. Summa:", r.Amount, r.Currency, "\033[0m")
+	}
 
 	// check if transaction vendor in config
 	if !iniutil.SupplierInConfig(r.Supplier) {
@@ -71,6 +77,8 @@ func RunPrompts(r *util.Record) {
 		case "ei":
 			r.Category = PromptSingleCategory()
 		}
+	} else {
+		fmt.Println("Tehingu kaupmees ning kategooria salvestatud...liigun järgmisesse")
 	}
 
 	items := iniutil.FindCategories(r.Supplier)
@@ -92,7 +100,7 @@ func PromptSectionName() string {
 	// using bufio reader here due to promptui bugging with back to back prompts
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Println("Sisesta kaupmehe nimi")
+	fmt.Println("\033[1mSisesta kaupmehe nimi\033[0m")
 	fmt.Println("Näide: kaupmees:RIMI/TARTU LOUNAKESKUS --> rimi")
 
 	fmt.Print("> ")
@@ -112,7 +120,7 @@ func PromptCategoryName() string {
 	// using bufio reader here due to promptui bugging with back to back prompts
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Printf("Sisesta kategooria mille alla salvestada\n")
+	fmt.Printf("\033[1mSisesta kategooria mille alla salvestada\033[0m\n")
 	fmt.Println("Et lisada mitu kategooriat, pane kategooriate vahele koma NÄIDE: söök,meelelahutus")
 
 	fmt.Print("> ")

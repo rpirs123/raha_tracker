@@ -60,7 +60,6 @@ func main() {
 }
 
 func addRecord(rec *util.Record) {
-	fmt.Println("RCCC", rec.Supplier, rec.Amount, rec.TransactionType, rec.Category)
 
 	clean := strings.ReplaceAll(rec.Amount, ",", ".")
 	amount, err := strconv.ParseFloat(clean, 64)
