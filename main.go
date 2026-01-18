@@ -9,6 +9,7 @@ import (
 	"raha_tracker/lib/iniutil"
 	csvparser "raha_tracker/lib/parser"
 	"strconv"
+	"strings"
 )
 
 var (
@@ -18,6 +19,8 @@ var (
 
 func main() {
 	csvFile := os.Args[1]
+	kulud = make(map[string]float64)
+	tulud = make(map[string]float64)
 
 	iniutil.LoadConfig()
 
@@ -28,14 +31,13 @@ func main() {
 
 	recLength := len(records)
 	for i := range records {
-
-		// skip first record
-		if i == 0 {
+		// skip first two records
+		if i == 0 || i == 1 {
 			continue
 		}
 
 		if i >= recLength-3 {
-			return
+			continue
 		}
 		rec := records[i]
 
@@ -47,12 +49,15 @@ func main() {
 
 		addRecord(&rcrd)
 	}
+	fmt.Println("KULUD", kulud)
+	fmt.Println("TULUD", tulud)
 }
 
 func addRecord(rec *util.Record) {
-	fmt.Println("RCCC", rec.Supplier, rec.Category, rec.SectionName)
+	fmt.Println("RCCC", rec.Supplier, rec.Amount, rec.TransactionType, rec.Category)
 
-	amount, err := strconv.ParseFloat(rec.Amount, 64)
+	clean := strings.ReplaceAll(rec.Amount, ",", ".")
+	amount, err := strconv.ParseFloat(clean, 64)
 	if err != nil {
 		// handle error
 		fmt.Println("Error during parsing string to float:", err)

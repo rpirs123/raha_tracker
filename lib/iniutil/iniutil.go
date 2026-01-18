@@ -78,11 +78,3 @@ func AddConfigEntry(secName string, category string) {
 
 	cfg.SaveTo("config")
 }
-
-func AddSection() {
-
-}
-
-func AddCategory() {
-
-}
