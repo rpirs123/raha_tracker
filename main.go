@@ -7,6 +7,7 @@ import (
 	util "raha_tracker/lib"
 	"raha_tracker/lib/cli"
 	"raha_tracker/lib/iniutil"
+	"raha_tracker/lib/output"
 	csvparser "raha_tracker/lib/parser"
 	"strconv"
 	"strings"
@@ -49,8 +50,7 @@ func main() {
 
 		addRecord(&rcrd)
 	}
-	fmt.Println("KULUD", kulud)
-	fmt.Println("TULUD", tulud)
+	output.ShowOutput(kulud, tulud)
 }
 
 func addRecord(rec *util.Record) {
@@ -65,9 +65,9 @@ func addRecord(rec *util.Record) {
 
 	switch rec.TransactionType {
 	case "D":
-		kulud[rec.Category] = amount
+		kulud[rec.Category] += amount
 	case "K":
-		tulud[rec.Category] = amount
+		tulud[rec.Category] += amount
 	}
 
 }
