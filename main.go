@@ -23,6 +23,12 @@ func main() {
 	kulud = make(map[string]float64)
 	tulud = make(map[string]float64)
 
+	if _, err := os.Stat("config"); os.IsNotExist(err) {
+		fmt.Println("Config file inside root not found...Creating...")
+		iniutil.CreateConfig()
+		fmt.Println("Config file created successfully")
+	}
+
 	iniutil.LoadConfig()
 
 	records, err := csvparser.ParseCsv(csvFile)

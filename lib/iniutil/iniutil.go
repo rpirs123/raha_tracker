@@ -28,6 +28,11 @@ func LoadConfig() {
 	}
 }
 
+func CreateConfig() {
+	f := CreateEmptyIni()
+	f.SaveTo("config")
+}
+
 func CreateEmptyIni() *ini.File {
 	return ini.Empty()
 }
