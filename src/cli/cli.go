@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 	"os"
-	util "raha_tracker/lib"
-	"raha_tracker/lib/iniutil"
+	util "raha_tracker/src"
+	"raha_tracker/src/iniutil"
 	"strings"
 
 	"github.com/manifoldco/promptui"
