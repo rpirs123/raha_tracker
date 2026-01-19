@@ -99,7 +99,7 @@ After you have the requirements filled
  3. run the exe file with this command: 
 
  ```
- .\raha_tracker.exe "C:\Users\rober\Downloads\statement.csv" 
+ .\raha_tracker.exe "C:/path/to/your/statement.csv" 
  ```
 
  Congratulations if you followed the guide correctly then the program should work. 
