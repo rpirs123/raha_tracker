@@ -26,7 +26,7 @@ For each transaction it looks at a config file, and then tries to find the vendo
 kategooria = söök
  ```
 
- Wolt is the section name and it contains category = food in Estonian. This means that the program would auto save any transactions from Wolt as food.
+ Wolt is the section name and it contains ```category = food``` in Estonian. This means that the program would auto save any transactions from Wolt as food.
 
  If ofcourse the vendor and category is not saved inside the config, it will prompt the user to decide if they want to save the vendor or not : 
 
