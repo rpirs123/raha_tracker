@@ -5,7 +5,7 @@ Since I mainly use Swedbank for my daily expeneses and wanted to do something wi
 
 #### NB: WHEN YOU USE THIS PROGRAM THE PROMPTS YOU RECEIVE ARE IN ESTONIAN LANGUAGE. 
 
-####  If you wish to change the language clone this repository and change the prompt labels inside lib/cli/cli.go
+####  If you wish to change the language clone this repository and change the prompt labels inside src/cli/cli.go
 
 
 ## How it works 
@@ -74,7 +74,7 @@ However if you chose no during the vendor saving prompt, the program will only a
 
 Prerequisites: 
 
- (All csv statements work as long as they follow the column format defined inside lib/csvcolumn.go) 
+ (All csv statements work as long as they follow the column format defined inside src/csvcolumn.go) 
 
 1. A CSV formatted bank statement from Swedbank.
 2.  .exe file 
