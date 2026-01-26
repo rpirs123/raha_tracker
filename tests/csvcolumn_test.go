@@ -9,12 +9,10 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// "Kliendi konto";"Reatüüp";"Kuupäev";"Saaja/Maksja";"Selgitus";"Summa";"Valuuta";"Deebet/Kreedit";"Arhiveerimistunnus";"Tehingu tüüp";"Viitenumber";"Dokumendi number";
-
 func TestFormat(t *testing.T) {
 
 	// replace the value of this variable to test your csv
-	path_to_your_csv_statement := "C:/Users/rober/Downloads/statement.csv"
+	path_to_your_csv_statement := "C:/path/to/your/statement.csv"
 
 	// expected format of the csv
 	format := [13]string{"Kliendi konto", "Reatüüp", "Kuupäev", "Saaja/Maksja", "Selgitus", "Summa", "Valuuta", "Deebet/Kreedit", "Arhiveerimistunnus", "Tehingu tüüp", "Viitenumber", "Dokumendi number"}
